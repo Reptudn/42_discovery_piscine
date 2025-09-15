@@ -1,58 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-	<title>Document</title>
-</head>
-<body>
-	<style>
-		.balloon {
-			width: 200px;
-			height: 200px;
-			background-color: red;
-			border-radius: 50%;
-		}
-	</style>
-	<div class="balloon"></div>
-	<script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      .balloon {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        border-radius: 50%;
+      }
+    </style>
+    <div class="balloon"></div>
+    <script>
+      $(document).ready(function () {
+        let index = 0;
+        const colors = ["red", "green", "blue", "black"];
 
-		const colors = ['red', 'green', 'blue', 'black'];
-		let index = 0;
-		const baseSize = 200;
+        $(".balloon").css("background-color", "red");
+        $(".balloon").css("width", "200px");
+        $(".balloon").css("height", "200px");
+        $(".balloon").css("border-radius", "50%");
 
-		const balloon = document.querySelector('.balloon');
-		balloon.addEventListener('click', () => {
-			const width = balloon.offsetWidth;
-			
-			if (width > 420)
-			{
-				balloon.style.width = `${baseSize}px`;
-				balloon.style.height = `${baseSize}px`;
-				index = 0;
-				balloon.style.backgroundColor = colors[index];
-				return;
-			}
+        $(".balloon").click(function () {
+          let width = $(".balloon").width();
 
-			balloon.style.width = `${width + 10}px`;
-			balloon.style.height = `${width + 10}px`;
-			index = (index + 1) % colors.length;
-			balloon.style.backgroundColor = colors[index];
-		});
+          if (width > 420) {
+            $(".balloon").css("width", "200px");
+            $(".balloon").css("height", "200px");
+            index = 0;
+            $(".balloon").css("background-color", colors[index]);
+            return;
+          }
 
-		balloon.addEventListener('mouseleave', () => {
-			let width = balloon.offsetWidth;
-			
-			if (width <= 200)
-				return;
+          $(".balloon").css("width", `${width + 10}px`);
+          $(".balloon").css("height", `${width + 10}px`);
+          index = (index + 1) % colors.length;
+          $(".balloon").css("background-color", colors[index]);
+        });
 
-			width -= 5;
-			if (width < 200)
-				width = 200;
-			balloon.style.width = `${width}px`;
-			balloon.style.height = `${width}px`;
-		});
-	</script>
-</body>
+        $(".balloon").on("mouseleave", () => {
+          let width = $(".balloon").width();
+
+          if (width <= 200) return;
+
+          width -= 5;
+          if (width < 200) width = 200;
+          $(".balloon").css("width", `${width}px`);
+          $(".balloon").css("height", `${width}px`);
+        });
+      });
+    </script>
+  </body>
 </html>
