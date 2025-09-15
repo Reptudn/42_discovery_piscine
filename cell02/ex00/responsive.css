@@ -1,0 +1,8 @@
+table { border: 3px solid black; border-collapse: collapse; width: 100%;}
+tr { margin : 0; padding: 0; }
+.en { background-color: rgb(216, 55, 55); }
+.de { background-color: rgb(147, 228, 131); }
+td {
+	margin : 0; padding: 3rem; padding-left: 0;
+	border: 3px solid black;
+}

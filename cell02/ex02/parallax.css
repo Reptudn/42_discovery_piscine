@@ -1,0 +1,45 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+img {
+	width: 100dvw;
+	height: 100dvh;
+	display: block;
+}
+
+p {
+	position: absolute;
+	text-align: center;
+	color: white;
+	font-size: 3rem;
+}
+
+.middle p {
+	position: absolute;
+	top: 128%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.top p {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.bottom p {
+	position: absolute;
+	top: 180%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.middle {
+	background-color: black;
+	width: 100dvw;
+	height: 30dvh;
+}

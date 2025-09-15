@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="todo.js" defer></script>
+</head>
+<body>
+	<style>
+		div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			gap: 1%;
+		}
+
+		.todoBlock {
+			border: 3px solid black;
+			border-radius: 3px;
+			background-color: gray;
+			width: 80dvw;
+		}
+		.todoBlock p {
+			text-decoration: double;
+		}
+		.center {
+			text-align: center;
+		}
+		button { width: 100dvw; margin-top: 30px; padding: 30px;}
+	</style>
+	<h1 class="center">To-Do List</h1>
+	<div class='todoList' id="ft_list"></div>
+	<button id="new">New</button>
+</body>
+</html>

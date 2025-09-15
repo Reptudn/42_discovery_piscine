@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="Number A" id="numA" placeholder="Number A">
+	<select name="operation" id="operation">
+		<option value="+">+</option>
+		<option value="-">-</option>
+		<option value="*">*</option>
+		<option value="/">/</option>
+		<option value="%">%</option>
+	</select>
+	<input type="text" name="Number B" id="numB" placeholder="Number B">
+	<button type="submit" id="calculate">Try me!</button>
+	<script>
+		const numA = document.getElementById('numA');
+		const numB = document.getElementById('numB');
+		const operation = document.getElementById('operation');
+		document.getElementById('calculate').addEventListener('click', () => {
+
+			let a, b;
+			let result;
+
+			try {
+
+				if (numA.value === "" || numB.value === "")
+					throw new Error("Error :(");
+
+				const reg = new RegExp('^-?[0-9]+$');
+				if (!reg.test(numA.value) || !reg.test(numB.value))
+					throw new Error("Error :(");
+
+				a = parseInt(numA.value);
+				b = parseInt(numB.value);
+
+				
+				if (a < 0 || b < 0)
+					throw new Error("Error :(");
+				
+				switch (operation.value)
+				{
+					case '+':
+						result = a + b;
+						break;
+					case '-':
+						result = a - b;
+						break;
+					case '*':
+						result = a * b;
+						break;
+					case '/':
+						if (b === 0)
+							throw new Error("It’s over 9000!");
+						result = a / b;
+						break;
+					case '%':
+						if (b === 0)
+							throw new Error("It’s over 9000!");
+						result = a % b;
+						break;
+					default:
+						throw new Error("Impossible");
+						break;
+				}
+
+				console.log(result);
+				alert(result);
+
+			} catch (e) {
+
+				if (e.message === 'NaN')
+					e.message = "Error :(";
+
+				console.log(e.message);
+				alert(e.message);
+			}
+		})
+
+		setInterval(() => {
+			alert("Please, use me...!");
+		}, 30000);
+	</script>
+</body>
+</html>
