@@ -8,6 +8,11 @@ if [ $# -eq 0 ]; then
 	exit 1
 fi
 
+counter=0
 for i in $*; do
+	if [ $counter -eq 3 ]; then
+		exit
+	fi
 	echo $i
+	counter=$((counter + 1))
 done

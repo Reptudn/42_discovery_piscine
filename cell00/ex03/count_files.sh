@@ -1,2 +1,1 @@
-#/bin/bash
-ls | wc -l
+ls | wc -l | tr -d " "
