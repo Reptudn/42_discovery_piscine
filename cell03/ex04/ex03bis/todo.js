@@ -1,21 +1,17 @@
-const todoTemplate = (todo, done) => {
-  const element = document.createElement("div");
-  element.onclick = () => removeToDo(element);
-  element.className = "todoBlock";
-  element.innerHTML = `<p id="todoText">${todo}</p>`;
-  return element;
+const todoTemplate = (todo) => {
+  return $('<div class="todoBlock"></div>').text(`${todo}`);
 };
 
 function updateCookies() {
-  const cont = document.getElementById("ft_list");
-  if (!cont) return;
+  const container = $("#ft_list");
+  if (container.length === 0) return;
 
-  blocks = cont.getElementsByClassName("todoBlock");
+  const blocks = container.find(".todoBlock");
 
   let newCookies = [];
-  Array.from(blocks).forEach((block) => {
-    const text = block.querySelector("#todoText").textContent || false;
-    newCookies.push({ text: text });
+  blocks.each(function () {
+    const text = $(this).find('#todoText').text();
+    if (text) newCookies.push({ text: text });
   });
 
   const expires = new Date("2103-04-05").toUTCString();
@@ -24,11 +20,11 @@ function updateCookies() {
   )}; expires=${expires}; path=/`;
 }
 
-function insertToDo(text, checked, update = true) {
+function insertToDo(text, update = true) {
   const container = document.getElementById("ft_list");
   if (!container) return;
 
-  container.insertAdjacentElement("afterbegin", todoTemplate(text, checked));
+  container.insertAdjacentElement("afterbegin", todoTemplate(text));
 
   if (update) updateCookies();
 }
@@ -42,7 +38,7 @@ function removeToDo(element) {
 function createToDo() {
   let todo = prompt("Describe your ToDo!", "Go to the GYM!");
   if (todo === null || todo === "") return;
-  insertToDo(todo, false);
+  insertToDo(todo);
 }
 
 $(document).ready(function () {
@@ -54,7 +50,7 @@ $(document).ready(function () {
     try {
       const todos = JSON.parse(todoCookie.substring("todos=".length));
       todos.reverse().forEach((todo) => {
-        insertToDo(todo.text, todo.checked, false);
+        insertToDo(todo.text, false);
       });
     } catch (e) {}
   }
