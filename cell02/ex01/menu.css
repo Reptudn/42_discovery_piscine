@@ -1,15 +1,58 @@
-.bread {
-	background-color: brown;
+* {
+	margin: 0;
+	padding: 0;
 }
 
-.salad {
-	background-color: green;
+.dropdowns {
+	display: flex;
+	background-color: gray;
+	justify-content: center;
+	gap: 3%;
+	padding: 1%;
 }
 
-.cheese {
-	background-color: yellow;
+h1 {
+	text-align: center;
+	background-color: rgb(16, 130, 206);
+	padding: 2%;
 }
 
-.meat {
-	background-color: red;
+.burger {
+	background-color:cornflowerblue;
+	position: relative;
+	width: min-content;
+	border-radius: 10px;
+	padding: 1%;
 }
+
+.burger::after {
+	content: "Open";
+}
+
+.burger:hover::after {
+	content: "Close";
+}
+
+.burger:hover .content {
+	background-color: rgb(213, 219, 191);
+	display: block;
+}
+
+p:hover {
+	background-color: rgb(188, 211, 42);
+}
+
+p {
+	margin: 3%;
+	margin: 5%;
+}
+
+.burger .content {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 42;
+	padding: 1%;
+}
+
