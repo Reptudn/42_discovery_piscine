@@ -1,45 +1,48 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+body {
+    margin: 0;
+    padding: 0;
 }
 
-img {
-	width: 100dvw;
-	height: 100dvh;
-	display: block;
-}
-
-p {
-	position: absolute;
-	text-align: center;
-	color: white;
-	font-size: 3rem;
-}
-
-.middle p {
-	position: absolute;
-	top: 128%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.top p {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-}
-
-.bottom p {
-	position: absolute;
-	top: 180%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+.top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://xboxwire.thesourcemediaassets.com/sites/3/Hero-1-d751ebe2dbd048de3dc7.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
 }
 
 .middle {
-	background-color: black;
-	width: 100dvw;
-	height: 30dvh;
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    margin-top: 100vh;
+}
+
+.bottom {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://cdn2.unrealengine.com/mkart-ch6s4-keyart-final-4k-v2-3840x2160-481f5f52bd4e.png");
+    background-size: cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+p {
+    color: red;
 }

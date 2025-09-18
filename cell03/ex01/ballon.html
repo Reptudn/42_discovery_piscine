@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Document</title>
+	<title>Balloon 🔴 - 200px</title>
 </head>
 <body>
 	<style>
@@ -12,12 +12,17 @@
 			height: 200px;
 			background-color: red;
 			border-radius: 50%;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
 		}
 	</style>
 	<div class="balloon"></div>
 	<script>
 
 		const colors = ['red', 'green', 'blue', 'black'];
+		const circles = [ '🔴', '🟢', '🔵', '⚫' ];
 		let index = 0;
 		const baseSize = 200;
 
@@ -25,12 +30,13 @@
 		balloon.addEventListener('click', () => {
 			const width = balloon.offsetWidth;
 			
-			if (width > 420)
+			if (width >= 420)
 			{
 				balloon.style.width = `${baseSize}px`;
 				balloon.style.height = `${baseSize}px`;
 				index = 0;
 				balloon.style.backgroundColor = colors[index];
+				document.title = `Balloon ${circles[index]} - ${width + 10}px`;
 				return;
 			}
 
@@ -38,19 +44,20 @@
 			balloon.style.height = `${width + 10}px`;
 			index = (index + 1) % colors.length;
 			balloon.style.backgroundColor = colors[index];
+			document.title = `Balloon ${circles[index]} - ${width + 10}px`;
 		});
 
 		balloon.addEventListener('mouseleave', () => {
 			let width = balloon.offsetWidth;
-			
-			if (width <= 200)
-				return;
 
 			width -= 5;
 			if (width < 200)
 				width = 200;
 			balloon.style.width = `${width}px`;
 			balloon.style.height = `${width}px`;
+			if (--index < 0) index = colors.length - 1;
+			balloon.style.backgroundColor = colors[index];
+			document.title = `Balloon ${circles[index]} - ${width}px`;
 		});
 	</script>
 </body>
