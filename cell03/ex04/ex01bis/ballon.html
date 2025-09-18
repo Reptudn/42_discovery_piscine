@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <title>Document</title>
+    <title>jQuery Balloon - 200px</title>
   </head>
   <body>
     <style>
@@ -13,45 +13,52 @@
         height: 200px;
         background-color: red;
         border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
       }
     </style>
     <div class="balloon"></div>
     <script>
       $(document).ready(function () {
         let index = 0;
+        const baseSize = 200;
+        let size = baseSize;
         const colors = ["red", "green", "blue", "black"];
 
-        $(".balloon").css("background-color", "red");
-        $(".balloon").css("width", "200px");
-        $(".balloon").css("height", "200px");
-        $(".balloon").css("border-radius", "50%");
-
         $(".balloon").click(function () {
-          let width = $(".balloon").width();
-
-          if (width > 420) {
-            $(".balloon").css("width", "200px");
-            $(".balloon").css("height", "200px");
+          if (size >= 420) {
+            size = 200;
+            $(".balloon").css("width", `${size}px`);
+            $(".balloon").css("height", `${size}px`);
             index = 0;
             $(".balloon").css("background-color", colors[index]);
+            document.title = `jQuery Balloon - ${size}px`;
             return;
           }
 
-          $(".balloon").css("width", `${width + 10}px`);
-          $(".balloon").css("height", `${width + 10}px`);
+          size += 10;
+          if (size > 420) size = 420;
+          $(".balloon").css("width", `${size}px`);
+          $(".balloon").css("height", `${size}px`);
           index = (index + 1) % colors.length;
           $(".balloon").css("background-color", colors[index]);
+          document.title = `jQuery Balloon - ${size}px`;
         });
 
         $(".balloon").on("mouseleave", () => {
-          let width = $(".balloon").width();
+          if (size <= 200) return;
 
-          if (width <= 200) return;
-
-          width -= 5;
-          if (width < 200) width = 200;
-          $(".balloon").css("width", `${width}px`);
-          $(".balloon").css("height", `${width}px`);
+          size -= 5;
+          if (size <= 200) size = 200;
+          $(".balloon").css("width", `${size}px`);
+          $(".balloon").css("height", `${size}px`);
+          index--;
+          if (index < 0) index = colors.length - 1;
+          $(".balloon").css("background-color", colors[index]);
+          document.title = `jQuery Balloon - ${size}px`;
         });
       });
     </script>
